@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>SignUp</title>
+</head>
+<body>
+    <%- include('./partials/navbar') %> 
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <form action="/user/signup" method="post" class="p-4 border rounded shadow-sm bg-light">
+                    <h2 class="text-center mb-4">Sign Up</h2>
+                    <div class="form-floating mb-3">
+                        <input name="fullname" type="text" class="form-control" id="fullname" placeholder="Full Name" required>
+                        <label for="fullname">Full Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input name="email" type="email" class="form-control" id="email" placeholder="Email Address" required>
+                        <label for="email">Email Address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
+                        <label for="password">Password</label>
+                    </div>
+                    <p><a href="/user/signin" class="link-primary">Already have an account?</a></p>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <%- include('./partials/scripts') %>
+</body>
+</html>

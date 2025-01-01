@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>SignIn</title>
+</head>
+<body>
+    <%- include('./partials/navbar') %> 
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <form action="#" method="post" class="p-4 border rounded shadow-sm bg-light">
+                    <h2 class="text-center mb-4">Sign In</h2>
+                    <div class="form-floating mb-3">
+                        <input name="email" type="email" class="form-control" id="email" placeholder="Email Address" required>
+                        <label for="email">Email Address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
+                        <label for="password">Password</label>
+                    </div>
+                    <% if (locals.msg) { %>
+                        <p class="text-danger fs-5 text-center">
+                            <%= msg == 1 ? "No User Found" : msg == 2 ? "Wrong Password" : "" %>
+                        </p>
+                    <% } %>
+
+                    <p><a href="/user/signup" class="link-primary">Dont have an account?</a></p>
+                    <button type="submit" class="btn btn-primary w-100 mt-2">Sign In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <%- include('./partials/scripts') %>
+</body>
+</html>

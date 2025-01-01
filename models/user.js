@@ -1,24 +1,24 @@
 const mongoose=require("mongoose");
 const { createHmac,randomBytes, Hmac } = require("crypto");
+const { type } = require("os");
 const userschema=new mongoose.Schema({
     fullname:{
-        Type:String,
+        type:String,
         required:true
     },
     email:{
-        Type:String,
+        type:String,
         required:true
     },
     salt:{
-        Type:String,
-        required:true
+        type:String,
     },
     password:{
-        Type:String,
+        type:String,
         required:true
     },
     profileimageurl:{
-        Type:String,
+        type:String,
         default:"/images/default.png"
     },
     role:{
