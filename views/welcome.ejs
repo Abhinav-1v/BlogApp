@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Welcome to Blogemble</title>
+    <style>
+        /* Additional custom styles to enhance the look */
+        .hero-section {
+            background-color: #343a40;
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-heading {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary-custom {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.25rem;
+            border-radius: 30px;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .section-container {
+            padding: 50px 0;
+            background-color: #f8f9fa;
+        }
+
+        .section-container h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .section-container p {
+            text-align: center;
+            font-size: 1.125rem;
+            color: #6c757d;
+        }
+
+        .feature-box {
+            margin-top: 30px;
+        }
+
+        .feature-box img {
+            max-width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .feature-box h5 {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .feature-box p {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <%- include('./partials/navbar') %>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div>
+            <h1 class="hero-heading">Welcome to Blogemble</h1>
+            <p>Your platform to create and share blogs effortlessly.</p>
+            <a href="/user/signin" class="btn-primary-custom">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section-container">
+        <div class="container">
+            <h2>Why Blogemble?</h2>
+            <p>Blogemble allows you to express yourself, share your thoughts, and connect with others.</p>
+
+            <div class="row">
+                <div class="col-md-4 feature-box">
+                    <img src="https://via.placeholder.com/100" alt="Feature 1">
+                    <h5>Write Your Story</h5>
+                    <p>Create blogs with ease and share your unique voice with the world.</p>
+                </div>
+                <div class="col-md-4 feature-box">
+                    <img src="https://via.placeholder.com/100" alt="Feature 2">
+                    <h5>Engage with Community</h5>
+                    <p>Interact with readers, receive feedback, and connect with like-minded individuals.</p>
+                </div>
+                <div class="col-md-4 feature-box">
+                    <img src="https://via.placeholder.com/100" alt="Feature 3">
+                    <h5>Customize Your Blog</h5>
+                    <p>Choose from a variety of templates and personalize your blog.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2025 Blogemble. All rights reserved.</p>
+    </footer>
+
+    <%- include('./partials/scripts') %>
+</body>
+</html>
