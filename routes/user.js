@@ -2,9 +2,21 @@ const {Router}=require("express");
 const USER = require("../models/user");
 const { createHmac } = require('crypto');
 const { settoken, authcheckermiddleware } = require("../services/auth");
+const multer =require("multer");
 const path = require("path");
 
 const router=Router();
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        const userDir = path.resolve(`./public/images/`);  
+        cb(null, userDir);
+    },
+    filename: function (req, file, cb) {
+      cb(null, `${Date.now()}-${file.originalname}`);
+    }
+});
+const upload=multer({storage});
 
 router.get('/signin',authcheckermiddleware,(req,res)=>{
     res.render("signin");
@@ -31,19 +43,22 @@ router.post('/signin',async(req,res)=>{
 });
 
 
-router.post('/signup',async(req,res)=>{
+router.post('/signup',upload.single('profileimageurl'),async(req,res)=>{
     const {fullname,email,password}=req.body;
     await USER.create({
         fullname,
         email,
-        password
+        password,
+        profileimageurl:`/images/${req.file?req.file.filename:'default.png'}`
     });
     return res.redirect('/user/signin');
 });
+
 router.get('/images/:pfpid',(req,res)=>{
     const pfpid=req.params.pfpid;
     return res.sendFile(path.resolve(`./public/images/${pfpid}`));
-})
+});
+
 router.get('/signout',(req,res)=>{
     res.clearCookie('token');
     return res.redirect('/user/signin');

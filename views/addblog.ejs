@@ -12,9 +12,10 @@
                 <form action="/blog/addblog" method="post" class="p-4 border rounded shadow-sm bg-light" enctype="multipart/form-data">
                     <h2 class="text-center mb-4">Add Blog</h2>
                     <% if (locals.msg) { %>
-                        <div class="alert alert-success" role="alert">
-                            <%= msg %>
-                          </div>
+                        <div class="alert alert-success d-flex justify-content-between" role="alert">
+                            <%= locals.msg %>
+                            <a href="/blog/<%= locals.blogid %>" class="btn btn-primary ">View</a>
+                        </div>
                     <% } %>
                     <div class="form-floating mb-3">
                         <input name="title" type="text" class="form-control" id="title" placeholder="Blog Title" required>
@@ -25,7 +26,7 @@
                         <label for="body">Description</label>
                     </div>
                     <div class="form-floating">
-                        <input name="coverimageurl" type="file" class="form-control" id="coverimageurl" placeholder="Email Address" required>
+                        <input name="coverimageurl" type="file" class="form-control" id="coverimageurl" placeholder="Cover Image" required>
                         <label for="coverimageurl">Cover Image</label>
                     </div>
 

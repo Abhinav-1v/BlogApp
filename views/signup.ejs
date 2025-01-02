@@ -10,7 +10,7 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-4">
-                <form action="/user/signup" method="post" class="p-4 border rounded shadow-sm bg-light">
+                <form action="/user/signup" method="post" class="p-4 border rounded shadow-sm bg-light" enctype="multipart/form-data">
                     <h2 class="text-center mb-4">Sign Up</h2>
                     <div class="form-floating mb-3">
                         <input name="fullname" type="text" class="form-control" id="fullname" placeholder="Full Name" required>
@@ -24,7 +24,11 @@
                         <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
                         <label for="password">Password</label>
                     </div>
-                    <p><a href="/user/signin" class="link-primary">Already have an account?</a></p>
+                    <div class="form-floating mb-4">
+                        <input name="profileimageurl" type="file" class="form-control" id="profileimageurl" placeholder="Cover Image" >
+                        <label for="profileimageurl">Profile Image</label>
+                    </div>
+                    <p><a href="/user/signin" class="link-primary ">Already have an account?</a></p>
                     <button type="submit" class="btn btn-primary w-100 mt-3">Sign Up</button>
                 </form>
             </div>

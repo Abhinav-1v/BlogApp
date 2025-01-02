@@ -7,27 +7,32 @@
 <body>
     <%- include('./partials/navbar') %>
     <div class="container my-4">
-        <div class="row g-4">
-          <% blogs.forEach(blog => { %>
-            <div class="col-md-4">
-              <div class="card h-100 shadow-sm">
-                <img src="<%= blog.coverimageurl %>" class="card-img-top" alt="Cover Image for <%= blog.title %>">
-                <div class="card-body">
-                  <h5 class="card-title"><%= blog.title %></h5>
-                  <p class="card-text"><%= blog.body %></p>
-                </div>
-                <div class="card-footer text-muted">
-                  <small>
-                    <p class="mb-1">By: <%= blog.createdby.fullname %></p>
-                    <p>Created At: <%= new Date(blog.createdAt).toLocaleString() %></p>
-                  </small>
-                </div>
+      <div class="row g-4">
+        <% blogs.forEach(blog => { %>
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+              <img 
+                src="<%= blog.coverimageurl %>" 
+                class="card-img-top object-fit-cover" 
+                style="height: 200px;" 
+                alt="Cover Image for <%= blog.title %>">
+              <div class="card-body">
+                <h5 class="card-title"><%= blog.title %></h5>
+              </div>
+              <div class="card-footer text-muted d-flex justify-content-between">
+                <img src="<%= blog.createdby.profileimageurl %>" alt="/images/default.png" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+                <small>
+                  <p class="mb-1">By: <%= blog.createdby.fullname %></p>
+                  <p>Created At: <%= new Date(blog.createdAt).toLocaleString() %></p>
+                </small>
+                <a href="/blog/<%= blog._id %>" class="btn btn-secondary mt-2" style="height: 5.5vh;">Read</a>
               </div>
             </div>
-          <% }) %>
-        </div>
+          </div>
+        <% }) %>
       </div>
-      
+    </div>
+          
     <%- include('./partials/scripts') %>
 </body>
 </html>

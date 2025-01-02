@@ -26,7 +26,7 @@ async function authcheckermiddleware(req,res,next){
     const token=req.cookies?.token;
     if(token && checktoken(token)){
         const user=checktoken(token);
-        const blogs=await BLOG.find({}).sort({createdAt:-1}).populate({path:'createdby',select:'fullname'});
+        const blogs=await BLOG.find({}).sort({createdAt:-1}).populate({path:'createdby',select:'fullname profileimageurl'});
         return res.render("home",{user,blogs});
     }
     next();

@@ -26,13 +26,13 @@
                       <%= user.fullname %>
                   </a>
                   <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="/user/signout">Logout</a></li>
+                    <li><a class="dropdown-item" href="/user/signout">Logout</a></li>
                   </ul>
               </li>
               <li class="nav-item">
                   <!-- Bootstrap image with float-end to align to the right -->
                    <a href="/user<%= user.profileimageurl %>" target="_blank">
-                     <img src="<%= user.profileimageurl %>" alt="/images/default.png" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+                     <img src="<%=user.profileimageurl %>" alt="/images/default.png" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
                    </a>
               </li>
               <% } %>
