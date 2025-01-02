@@ -1,4 +1,5 @@
 const jwt=require("jsonwebtoken");
+const BLOG = require("../models/blog");
 
 const secretkey="abhinav@10";
 
@@ -21,11 +22,12 @@ function checktoken(token){
     }
 }
 
-function authcheckermiddleware(req,res,next){
+async function authcheckermiddleware(req,res,next){
     const token=req.cookies?.token;
     if(token && checktoken(token)){
         const user=checktoken(token);
-        return res.render("home",{user});
+        const blogs=await BLOG.find({}).sort({createdAt:-1}).populate({path:'createdby',select:'fullname'});
+        return res.render("home",{user,blogs});
     }
     next();
 }

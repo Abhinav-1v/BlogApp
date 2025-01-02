@@ -6,6 +6,7 @@ const cookieparser=require('cookie-parser');
 const app=express();
 const PORT=8008;
 const userrouter=require('./routes/user');
+const blogrouter=require('./routes/blog');
 const cookieParser = require("cookie-parser");
 const {authcheckermiddleware, checktoken } = require("./services/auth");
 
@@ -32,8 +33,24 @@ app.get('/home',authcheckermiddleware,(req,res)=>{
 });
 
 app.use('/user',userrouter);
+app.use('/blog',blogrouter);
 
 
-
+app.get('/demo',(req,res)=>{
+    const token=req.cookies?.token;
+    const user=checktoken(token);
+    return res.render('demo',{user,blogs:[{
+        title: '1213',
+        body: '131313',
+        coverimageurl: '/uploads/67757ff4d4df0a5ae1cd06e4/1735835934273-drivelink.txt',
+        createdby: {
+            fullname:'Abhinav Verma'
+        },
+        _id: `new ObjectId('6776c11ed91f948e511e1f82')`,
+        createdAt: '2025-01-02T16:38:54.286Z',
+        updatedAt: '2025-01-02T16:38:54.286Z',
+        __v: 0
+      }]});
+})
 
 app.listen(PORT,()=>{console.log("Sever started at PORT: "+PORT)})

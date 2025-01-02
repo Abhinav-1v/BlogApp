@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark">
   <div class="container-fluid">
-      <a class="navbar-brand">Blogemble</a>
+      <a href="/" class="navbar-brand">Blogemble</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav align-items-center">
               <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/">Home</a>
+                  <a class="nav-link active" aria-current="page" href=<%= locals.user?"/home":"/" %>>Home</a>
               </li>
               <% if (!locals.user) { %>
               <li class="nav-item">
@@ -19,7 +19,7 @@
               <% } %>
               <% if (locals.user) { %>
               <li class="nav-item">
-                  <a class="nav-link" href="#">Add Blog</a>
+                  <a class="nav-link" href="/blog/addblog">Add Blog</a>
               </li>
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -32,7 +32,7 @@
               <li class="nav-item">
                   <!-- Bootstrap image with float-end to align to the right -->
                    <a href="/user<%= user.profileimageurl %>" target="_blank">
-                     <img src="<%= user.profileimageurl %>" alt="Profile Picture" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+                     <img src="<%= user.profileimageurl %>" alt="/images/default.png" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
                    </a>
               </li>
               <% } %>

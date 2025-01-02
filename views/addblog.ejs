@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Add New Blog</title>
+</head>
+<body>
+    <%- include('./partials/navbar') %>
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div >
+                <form action="/blog/addblog" method="post" class="p-4 border rounded shadow-sm bg-light" enctype="multipart/form-data">
+                    <h2 class="text-center mb-4">Add Blog</h2>
+                    <% if (locals.msg) { %>
+                        <div class="alert alert-success" role="alert">
+                            <%= msg %>
+                          </div>
+                    <% } %>
+                    <div class="form-floating mb-3">
+                        <input name="title" type="text" class="form-control" id="title" placeholder="Blog Title" required>
+                        <label for="title">Blog Title</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea name="body" class="form-control" placeholder="Leave a comment here" id="body" style="height: 280px "></textarea>
+                        <label for="body">Description</label>
+                    </div>
+                    <div class="form-floating">
+                        <input name="coverimageurl" type="file" class="form-control" id="coverimageurl" placeholder="Email Address" required>
+                        <label for="coverimageurl">Cover Image</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary float-center mt-5">Add Blog</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <%- include('./partials/scripts') %>
+</body>
+</html>
