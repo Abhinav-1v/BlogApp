@@ -61,7 +61,7 @@ router.get('/:blogid',async (req,res)=>{
     const blog=await BLOG.findOne({_id:blogid}).populate({path:"createdby",select:"fullname profileimageurl"});
     const comments=await COMM.find({blogid:blog._id}).populate({path:'createdby',select:"fullname"});
     return res.render('viewblog',{user,blog,comments});
-})
+});
 
 router.get('/images/*',(req,res)=>{
     const blogpicid=req.params[0];

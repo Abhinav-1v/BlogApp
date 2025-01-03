@@ -12,9 +12,7 @@ const blogrouter=require('./routes/blog');
 const cookieParser = require("cookie-parser");
 const {authcheckermiddleware, checktoken } = require("./services/auth");
 
-// mongoose.connect(process.env.MONGO_URL || "mongodb://127.0.0.1:27017/blogapp").then(()=>console.log("MongoDB connected"));
-mongoose.connect("mongodb+srv://abhinavverma:abhinavverma@cluster0.guywd.mongodb.net/blogapp?retryWrites=true&w=majority").then(()=>console.log("MongoDB connected"));
-
+mongoose.connect(process.env.MONGO_URL || "mongodb://127.0.0.1:27017/blogapp").then(()=>console.log("MongoDB connected"));
 app.set("view engine","ejs");
 app.set("views",path.resolve("./views"));
 app.use(express.urlencoded({extended:false}));
@@ -56,4 +54,4 @@ app.get('/demo',(req,res)=>{
       }]});
 })
 
-app.listen(PORT,()=>{console.log("Sever started at PORT: "+PORT)})
+app.listen(PORT,'0.0.0.0',()=>{console.log("Server started at PORT: "+PORT)})
