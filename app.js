@@ -12,7 +12,8 @@ const blogrouter=require('./routes/blog');
 const cookieParser = require("cookie-parser");
 const {authcheckermiddleware, checktoken } = require("./services/auth");
 
-mongoose.connect(process.env.MONGO_URL || "mongodb://127.0.0.1:27017/blogapp").then(()=>console.log("MongoDB connected"));
+// mongoose.connect(process.env.MONGO_URL || "mongodb://127.0.0.1:27017/blogapp").then(()=>console.log("MongoDB connected"));
+mongoose.connect("mongodb+srv://abhinavverma:abhinavverma@cluster0.guywd.mongodb.net/blogapp?retryWrites=true&w=majority").then(()=>console.log("MongoDB connected"));
 
 app.set("view engine","ejs");
 app.set("views",path.resolve("./views"));
