@@ -1,7 +1,7 @@
 const {Router}=require("express");
 const USER = require("../models/user");
 const { createHmac } = require('crypto');
-const { settoken, authcheckermiddleware } = require("../services/auth");
+const { settoken, authcheckermiddleware, checktoken } = require("../services/auth");
 const multer =require("multer");
 const path = require("path");
 
@@ -62,6 +62,21 @@ router.get('/images/:pfpid',(req,res)=>{
 router.get('/signout',(req,res)=>{
     res.clearCookie('token');
     return res.redirect('/user/signin');
+});
+
+router.get('/upfp',(req,res)=>{
+    const token=req.cookies?.token;
+    const user=checktoken(token);
+    return res.render('changepfp',{user});
+});
+
+router.post('/upfp',upload.single('profileimageurl'),async (req,res)=>{
+    const token=req.cookies?.token;
+    const user=checktoken(token);
+    const updateduser= await USER.findOneAndUpdate({_id:user._id},{profileimageurl:`/images/${req.file.filename}`},{new:true});
+    const newtoken=settoken(updateduser);
+    res.cookie('token',newtoken);
+    return res.redirect('/home');
 });
 
 module.exports=router;

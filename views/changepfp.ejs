@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Update Profile Picture</title>
+</head>
+<body>
+    <%- include('./partials/navbar') %>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Update Profile Picture</h3>
+                        <!-- Display current profile picture -->
+                        <div class="my-4">
+                            <img 
+                                src="<%= user.profileimageurl || '/images/default.png' %>" 
+                                alt="Current Profile Picture" 
+                                class="rounded-circle" 
+                                style="width: 150px; height: 150px; object-fit: cover;">
+                        </div>
+
+                        <!-- Form to upload a new profile picture -->
+                        <form action="/user/upfp" method="POST" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="profileimageurl" class="form-label">Upload New Profile Picture</label>
+                                <input 
+                                    type="file" 
+                                    class="form-control" 
+                                    id="profileimageurl" 
+                                    name="profileimageurl" 
+                                    required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Picture</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('./partials/scripts') %>
+</body>
+</html>
