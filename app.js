@@ -38,20 +38,7 @@ app.use('/blog',blogrouter);
 
 
 app.get('/demo',(req,res)=>{
-    const token=req.cookies?.token;
-    const user=checktoken(token);
-    return res.render('demo',{user,blogs:[{
-        title: '1213',
-        body: '131313',
-        coverimageurl: '/uploads/67757ff4d4df0a5ae1cd06e4/1735835934273-drivelink.txt',
-        createdby: {
-            fullname:'Abhinav Verma'
-        },
-        _id: `new ObjectId('6776c11ed91f948e511e1f82')`,
-        createdAt: '2025-01-02T16:38:54.286Z',
-        updatedAt: '2025-01-02T16:38:54.286Z',
-        __v: 0
-      }]});
+    return res.render('demo');
 })
 
 app.listen(PORT,'0.0.0.0',()=>{console.log("Server started at PORT: "+PORT)})

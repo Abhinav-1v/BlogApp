@@ -3,6 +3,13 @@
 <head>
     <%- include('./partials/head') %>
     <title>Update Profile Picture</title>
+    <style>
+        #preview {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
     <%- include('./partials/navbar') %>
@@ -10,30 +17,40 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-lg-6 mx-auto">
-                <div class="card shadow-sm">
+                <div class="card shadow-sm border-0">
                     <div class="card-body text-center">
-                        <h3 class="card-title">Update Profile Picture</h3>
+                        <h3 class="card-title mb-4">Update Profile Picture</h3>
+                        
                         <!-- Display current profile picture -->
                         <div class="my-4">
                             <img 
                                 src="<%= user.profileimageurl || '/images/default.png' %>" 
                                 alt="Current Profile Picture" 
-                                class="rounded-circle" 
+                                class="rounded-circle border" 
+                                id="current-picture" 
                                 style="width: 150px; height: 150px; object-fit: cover;">
                         </div>
 
                         <!-- Form to upload a new profile picture -->
                         <form action="/user/upfp" method="POST" enctype="multipart/form-data">
-                            <div class="mb-3">
-                                <label for="profileimageurl" class="form-label">Upload New Profile Picture</label>
+                            <div class="mb-4">
+                                <label for="profileimageurl" class="form-label fw-bold">Upload New Profile Picture</label>
                                 <input 
                                     type="file" 
                                     class="form-control" 
                                     id="profileimageurl" 
                                     name="profileimageurl" 
-                                    required>
+                                    accept="image/*" 
+                                    required
+                                    onchange="previewImage(event)">
+                                <div class="mt-3">
+                                    <img 
+                                        id="preview" 
+                                        class="rounded-circle border d-none" 
+                                        alt="Preview">
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Update Picture</button>
+                            <button type="submit" class="btn btn-primary w-100">Update Picture</button>
                         </form>
                     </div>
                 </div>
@@ -42,5 +59,20 @@
     </div>
 
     <%- include('./partials/scripts') %>
+    <script>
+        function previewImage(event) {
+            const preview = document.getElementById('preview');
+            const file = event.target.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    preview.src = reader.result;
+                    preview.classList.remove('d-none');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 </body>
 </html>

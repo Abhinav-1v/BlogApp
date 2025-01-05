@@ -1,43 +1,43 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark">
-  <div class="container-fluid">
-      <a href="/" class="navbar-brand">Blogemble</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-expand-lg shadow-lg border-bottom" style="background: linear-gradient(90deg, #343a40, #212529);">
+    <div class="container-fluid">
+      <a href="/" class="navbar-brand text-white fs-4 fw-bold">Blogemble</a>
+      <button class="navbar-toggler border-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon text-light"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav align-items-center">
-              <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href=<%= locals.user?"/home":"/" %>>Home</a>
-              </li>
-              <% if (!locals.user) { %>
-              <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/user/signup">Create Account</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/user/signin">Sign In</a>
-              </li>
-              <% } %>
-              <% if (locals.user) { %>
-              <li class="nav-item">
-                  <a class="nav-link" href="/blog/addblog">Add Blog</a>
-              </li>
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <%= user.fullname %>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/user/upfp">Change pfp</a></li>
-                    <li><a class="dropdown-item" href="/user/signout">Logout</a></li>
-                  </ul>
-              </li>
-              <li class="nav-item">
-                  <!-- Bootstrap image with float-end to align to the right -->
-                   <a href="/user<%= user.profileimageurl %>" target="_blank">
-                     <img src="<%=user.profileimageurl %>" alt="/images/default.png" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
-                   </a>
-              </li>
-              <% } %>
-          </ul>
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item">
+            <a class="nav-link text-white fw-medium px-3" href=<%= locals.user ? "/home" : "/" %>>Home</a>
+          </li>
+          <% if (!locals.user) { %>
+          <li class="nav-item">
+            <a class="nav-link text-white fw-medium px-3" href="/user/signup"><i class="bi bi-person-plus"></i> Create Account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white fw-medium px-3" href="/user/signin"><i class="bi bi-box-arrow-in-right"></i> Sign In</a>
+          </li>
+          <% } %>
+          <% if (locals.user) { %>
+          <li class="nav-item">
+            <a class="nav-link text-white fw-medium px-3" href="/blog/addblog"><i class="bi bi-pencil-square"></i> Add Blog</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white fw-medium px-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i> <%= user.fullname %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="/user/upfp"><i class="bi bi-camera"></i> Change Profile Picture</a></li>
+              <li><a class="dropdown-item" href="/user/signout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+            </ul>
+          </li>
+          <li class="nav-item ms-2">
+            <a href="/user<%= user.profileimageurl %>" target="_blank">
+              <img src="<%= user.profileimageurl %>" alt="/images/default.png" class="rounded-circle border border-light shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
+            </a>
+          </li>
+          <% } %>
+        </ul>
       </div>
-  </div>
-</nav>
+    </div>
+  </nav>
+  
